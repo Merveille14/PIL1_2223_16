@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="assets copy/CSS/style.css">
+    <link rel="stylesheet" href="../Boostrape/css/bootstrap-grid.css">
+    <style>
+        body{
+            background-color: rgb(248, 210, 161);
+        }
+        nav{
+            padding: 0px;  
+        }
+        nav ul{
+            list-style: none;
+            margin: 0 auto;
+            display: flex;
+            background-color: rgb(230, 134, 24);
+        }
+        nav ul li{
+            color: #fff;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 3px;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body class="class-login">
+    <nav>
+        <ul class="ff">
+            <img class="img-logo" src="assets copy/images/logo.png">
+            <li><span><h1 id="centree">INSTITUT DE FORMATION ET DE RECHERCHE EN INFORMATIQUE</h1></span></li>
+        </ul>
+    </nav>
+    <div id="container">
+        <form action="">
+            <h1>Connexion</h1>
+            <label for="">Username : </label>
+            <input type="text" placeholder="Username" name="username" required>
+            <br>
+            <label for="">Password : </label>
+            <input type="password" placeholder="Password" name="password" required>
+            <br>
+            <label for="">Email : </label>
+            <input type="email" placeholder="Email" name="email" required>
+            <input type="submit" name="Connexion" value="Register">
+        </form>
+        <div class="pos">
+            <p style="font-weight: bolder;">
+                Not yet a count?<a href="#" style="color:rgb(230, 134, 24); ;">Login</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
