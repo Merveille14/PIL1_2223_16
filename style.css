@@ -35,16 +35,6 @@ p{
     height: auto;
     margin-left: 10px;
 }
-.div1
-{
-    display: flex;
-   
-    /*width: 40%;*/
-    /*height: 250px;*/
-    /*margin: 50px;*/
-    /*padding-bottom: -6px;*/
-    /*margin-top: 2%;*/
-}
 
 /*Login*/
 
@@ -109,7 +99,7 @@ form
    }
 
    /*Grille image*/
-   .grid{
+   /*.grid{
         display:grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
@@ -155,5 +145,5 @@ form
         text-decoration: none;
         cursor: pointer;
         width: 100%;
-    }
+    }*/
     
