@@ -4,44 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
-    <link rel="stylesheet" href="assets copy/CSS/style.css">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="assets_copy/CSS/style.css">
+    <link rel="stylesheet" href="../Boostrape/css/bootstrap-grid.css">
     <style>
         body{
             background-color: rgb(248, 210, 161);
-        }
-        .header{
-            display: flex;
-            align-items: center;
         }
         nav{
             padding: 0px;  
         }
         nav ul{
             list-style: none;
-            margin: 0 auto;
+            margin: auto;
             display: flex;
-            justify-content:left;
             background-color: rgb(230, 134, 24);
         }
         nav ul li{
             color: #fff;
             text-decoration: none;
-            padding: 24px;
+            padding: 14px;
             border-radius: 3px;
             margin-left: 100px;
         }
     </style>
 </head>
 <body class="class-login">
-    <nav>
-        <ul class="ff">
-            <li><a href="#"><span>RETURN</span></a></li>
-        </ul>
-    </nav>
+        <nav>
+            <ul class="ff">
+                <img class="img-logo" src="assets_copy/images/logo.png">
+                <li><span><h1 id="centree">INSTITUT DE FORMATION ET DE RECHERCHE EN INFORMATIQUE</h1></span></li>
+            </ul>
+        </nav>
     <div id="container">
         <form action="">
-            <h1>Connexion</h1>
+            <h1>Inscription</h1>
             <label for="">Username : </label>
             <input type="text" placeholder="Username" name="username" required>
             <br>
@@ -50,11 +47,11 @@
             <br>
             <label for="">Email : </label>
             <input type="email" placeholder="Email" name="email" required>
-            <input type="submit" name="Connexion" value="Register">
+            <input type="submit" name="Connexion">
         </form>
         <div class="pos">
             <p style="font-weight: bolder;">
-                Not yet a count?<a href="#" style="color:rgb(230, 134, 24); ;">Login</a>
+                Already a count?<a href="#" style="color:rgb(230, 134, 24); ;">Connexion</a>
             </p>
         </div>
     </div>
