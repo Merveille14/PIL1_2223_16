@@ -1,0 +1,120 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>myTimeTable</title>
+        <meta charset="utf_8">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/bootstrap-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/templatemo-kind-heart-charity.css' %}">
+    </head>
+    <body class="statut">
+        <header>
+            <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <span>
+                           <img src="{% static 'img/timetable.png' %}" alt="" style="height: 65px; border-radius: 50px;">
+                            <small>myTimeTable</small>
+                        </span>
+                    </a>
+        
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+        
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#top">Un truc</a>
+                            </li>
+        
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_2">Un truc</a>
+                            </li>
+        
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_3">Un truc</a>
+                            </li>
+        
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_6">Un truc</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        
+        </header>
+        <section class="section-padding" id="section_3">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 col-12 text-center mb-4">
+                        <h2>Choose your status</h2>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 mt-4">
+                        <div class="custom-block-wrap">
+                            <img src="{% static 'img/je-suis-tres-bien-prepare-pour-examen.jpg' %}" alt=""
+                                class="custom-block-image img-fluid" alt="" style="height: 291px;" >
+
+                            <div class="custom-block">
+                                <div class="custom-block-body">
+                                    <h5 class="mb-3"></h5>
+
+                                    <p>If you are currently a student, we kindly request you to click the provided link for further information.</p>
+
+                                </div>
+
+                                <a href="{% url 'student' %}" class="custom-btn btn">Log in/ Sign up</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 mt-4">
+                        <div class="custom-block-wrap">
+                            <img src="{% static 'img/enseignant-concentre-dessinant-bord-expliquant-lecon-aux-eleves.jpg' %}"
+                                class="custom-block-image img-fluid" style="height: 291px;" alt="">
+
+                            <div class="custom-block">
+                                <div class="custom-block-body">
+                                    <h5 class="mb-3"></h5>
+
+                                    <p>If you are currently a teacher, we kindly request you to click the provided link for further information.</p>
+
+                                    
+                                </div>
+
+                                <a href="{% url 'teacher' %}" class="custom-btn btn">Log in/ Sign up</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 mt-4">
+                        <div class="custom-block-wrap">
+                            <img src="{% static 'img/entrepreneur-africain-start-up-lisant-graphiques-documents-administratifs-equipe-diversifiee-hommes-affaires-analysant-rapports-financiers-entreprise-partir-ordinateur-professionnel-entreprise-reussi-ent.jpg' %}"
+                                class="custom-block-image img-fluid" style="height: 291px;" alt="">
+
+                            <div class="custom-block">
+                                <div class="custom-block-body">
+                                    <h5 class="mb-3"></h5>
+
+                                    <p> Kindly click the designated link below for important administrative updates and relevant information.
+                                    </p>
+                                </div>
+
+                                <a href="{% url 'school' %}" class="custom-btn btn">Log in/ Sign up</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
