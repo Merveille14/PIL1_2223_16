@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+     <head>
+        <title>EDITION</title>
+        <style>
+            h1 {
+              font-size: 30px;
+              text-align: center;
+              color: white;
+              border-bottom: 1px solid aqua;
+              padding-bottom: 20px;
+              border-bottom-width: ;
+              box-shadow: 0px -2px 0px 0px black;
+              border: 1px solid black;
+              width: 100%;
+              height: 50px;
+              background-color: #080808;
+            }
+            
+            h1 input[type="date"] {
+              font-size: 25px;
+              border: 1px solid black;
+              border-radius: 4px;
+              background:;
+            }
+            
+            .general {
+              background-image: url("C:/Users/MSI GAMING/Documents/LAST/edpart/mainedit/static/images/timef.jpg");
+            } 
+            
+            table {
+              width: 100%;
+              height: 900px;
+            }
+            
+            .general tr {
+              display: flex;
+              flex-direction: column;
+              margin-bottom: 10px;
+              display: grid;
+              gap: 10px;
+              align-items: center;
+              transition: transform 0.3 ease;
+            }
+            
+            td {
+              border: 1px dotted black;
+            }
+            
+            .lab {
+              font-weight: bold;
+              font-size: 20px;
+              color: white;
+              margin-right: 10px;
+            }
+            
+            input {
+              margin-top: 10px;
+              width: 150px;
+              font-size: 20px;
+              border-radius: 6px;
+              border: 1px solid black;
+            }
+            
+            input:hover {
+              transform: scale(1.1);
+            }
+            
+            .bouton {
+              margin-top: 50px;
+              font-size: 20px;
+              float: right;
+              background-color: rgb(255, 209, 1);
+              border-radius: 16px;
+              color: white;
+              border: rgb(255, 209, 1);
+            }
+            
+            .addcell {
+              color: white;
+              background-color: aqua;
+              padding: 2px;
+              border: 1px outset aqua;
+              border-radius: 7px;
+            }
+            
+            .addcell:hover {
+              transform: scale(1.2);
+            }
+        </style>
+    </head>
+    <body>
+        <form method="POST" >
+               {% csrf_token %}
+            <h1>EMPLOI DU TEMPS DU <input type="date"> AU <input type="date"></h1>
+            <table class="general">
+                <tr>
+                    <td>
+                        <label for="semestre" class="lab">SEMESTRE:</label><br>
+                        <input id="semestre" name="semestre" type="number" placeholder="1">
+                    </td>
+                    <td>
+                        <label for="jour" class="lab">Jour:</label><br>
+                        <input id="jour" name="jour" type="DATE">
+                    </td>
+                    <td>
+                        <label for="groupe" class="lab">Classe:</label><br>
+                        <input id="groupe" name="groupe" type="text" placeholder="1ere année">
+                    </td>
+                    <td>
+                        <label for="cours" class="lab">Nom du Cours:</label><br>
+                        <input id="cours" name="cours" type="text" placeholder="Python">
+                    </td>
+                    <td>
+                        <label for="hb" class="lab">Heure de début:</label><br>
+                        <input id="hb" name="hb" type="TIME">
+                    </td>
+                    <td>
+                        <label for="hf" class="lab">Heure de fin:</label><br>
+                        <input id="hf" name="hf" type="TIME">
+                    </td>
+                    <td>
+                        <label for="prof" class="lab">Professeur:</label><br>
+                        <input id="nom" name="nom" type="text" placeholder="entrez le NOM">
+                        <input id="prenom" name="prenom" type="text" placeholder="entrez le Prénom">
+                    </td>
+                    <td>
+                        <label for="lieu" class="lab">Lieu du cours:</label><br>
+                        <input id="lieu" name="lieu" type="text" placeholder="Nom de l'Amphi">
+                    </td>
+                    <td>
+                        <button class="addcell">Ajouter Cellule</button>
+                    </td>
+                </tr>  
+            </table>
+            <input type="submit" value="Valider" class="bouton">
+        </form>
+        <script>
+            var addButton = document.querySelector(".addcell");
+            addButton.addEventListener("click", function(event) {
+                event.preventDefault();
+                var row = this.parentNode.parentNode;
+                var clonedRow = row.cloneNode(true);
+                row.parentNode.insertBefore(clonedRow, row.nextSibling);
+            });
+        </script>
+    </body>
+</html>
