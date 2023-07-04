@@ -1,0 +1,188 @@
+{% extends 'base/base.html' %}
+
+{% block 'title' %} Classrooms {% endblock %}
+
+{% block 'main' %}
+<div class="my-3">
+    <h1 class="">Classrooms</h1>
+</div>
+<div class="container-fluid my-3">
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addObject">Ajouter</button>
+    </div>
+</div>
+<div>
+    {% if error %}
+    <div class="my-3 alert alert-danger py-3 text-center">
+        <p class="my-0"> {{ error }} </p>
+    </div>
+    {% endif %}
+    {% if success %}
+    <div class="my-3 alert alert-success py-3 text-center">
+        <p class="my-0"> {{ success }} </p>
+    </div>
+    {% endif %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-stiped table-hover table-light rounded shadow overflow-hidden">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Total of Students</th>
+                    <th>Description</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in classrooms %}
+                <tr>
+                    <td>
+                        <div class="fw-bold">
+                            {{ forloop.counter }}
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            {{ s.label }}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="badge badge-primary">
+                            {{ s.capacity }} 
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            {{ s.desc }}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#editObject{{ s.id }}">Edit</button>
+                            <button class="btn btn-danger ms-2" data-bs-toggle="modal"
+                                data-bs-target="#delObject{{ s.id }}">Delete</button>
+
+                            <div class="modal fade" id="delObject{{ s.id }}" tabindex="-1"
+                                aria-labelledby="delObject{{ s.id }}Label" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="action" value="DELETE">
+                                        <input type="hidden" name="object_id" value="{{ s.id }}">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="delObject{{ s.id }}Label">
+                                                    Delete {{ s.label }}
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="py-3">
+                                                    <h4>Do You Realy Want to delete {{ s.label }} ? </h4>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">No, Cancel</button>
+                                                <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="editObject{{ s.id }}" tabindex="-1"
+                                aria-labelledby="editObject{{ s.id }}Label" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="action" value="UPDATE">
+                                        <input type="hidden" name="object_id" value="{{ s.id }}">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editObject{{ s.id }}Label">
+                                                    Update {{ s.label }}
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="my-3 text-start">
+                                                    <label for="label_id" class="form-label">Label:</label>
+                                                    <input type="text" name="label" id="label_id" required placeholder="Ex: Licence I SI"
+                                                        class="form-control" value="{{ s.label}}">
+                                                </div>
+                                                <div class="my-3 text-start">
+                                                    <label for="capacity" class="form-label">Total of Students:</label>
+                                                    <input type="number" min="0" name="capacity" id="capacity" placeholder="Ex: 100 for hundred students"
+                                                        class="form-control" value="{{ s.capacity}}">
+                                                </div>
+                                                <div class="my-3 text-start">
+                                                    <label for="desc" class="form-label">Description:</label>
+                                                    <textarea class="form-control" name="desc" id="desc" cols="30" rows="5" placeholder="Some Description about the Classroom">{{ s.desc }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">
+                        <div class="py-3">
+                            No data, Please add One
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="addObject" tabindex="-1" aria-labelledby="addObjectLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="CREATE">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addObjectLabel">
+                        Add new Classroom
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="my-3 text-start">
+                        <label for="label_id" class="form-label">Label:</label>
+                        <input type="text" name="label" id="label_id" required placeholder="Ex: Amphi IRAN 1"
+                            class="form-control">
+                    </div>
+                    <div class="my-3 text-start">
+                        <label for="capacity" class="form-label">Total of Students:</label>
+                        <input type="number" min="0" name="capacity" id="capacity" placeholder="Ex: 100 for hundred students"
+                            class="form-control">
+                    </div>
+                    <div class="my-3 text-start">
+                        <label for="desc" class="form-label">Description:</label>
+                        <textarea class="form-control" name="desc" id="desc" cols="30" rows="5" placeholder="Some Description about the Classroom"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

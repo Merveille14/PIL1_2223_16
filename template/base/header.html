@@ -1,0 +1,77 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg bg-light shadow-lg">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <span>
+                <img src="{% static 'img/timetable.png' %}" alt="" style="height: 65px; border-radius: 50px;">
+                <small>myTimeTable</small> </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item align-self-center c-url" data-url="{% url 'profile' %}">
+                    <a href="{% url 'profile' %}" class="nav-link click-scroll align-self-center">
+                        Welcome {{ user.first_name }} {{ user.last_name }}</a>
+                </li>
+
+                {% if user.is_superuser %}
+                <li class="nav-item align-self-center c-url" data-url="{% url 'subject' %}">
+                    <a class="nav-link click-scroll" href="{% url 'subject' %}">Subjects</a>
+                </li>
+                <li class="nav-item align-self-center c-url" data-url="{% url 'teacher' %}">
+                    <a class="nav-link click-scroll" href="{% url 'teacher' %}">Teachers</a>
+                </li>
+                <li class="nav-item align-self-center c-url" data-url="{% url 'level' %}">
+                    <a class="nav-link click-scroll" href="{% url 'level' %}">Levels</a>
+                </li>
+                <li class="nav-item align-self-center c-url" data-url="{% url 'classroom' %}">
+                    <a class="nav-link click-scroll" href="{% url 'classroom' %}">Classroom</a>
+                </li>
+                <li class="nav-item align-self-center c-url" data-url="{% url 'timetable' 99999999999 %}">
+                    <a class="nav-link click-scroll" href="{% url 'timetable' 99999999999 %}">Schedules</a>
+                </li>
+                {% else %}
+                <li class="nav-item align-self-center c-url" data-url="{% url 'timetables.students' %}">
+                    <a class="nav-link click-scroll" href="{% url 'timetables.students' %}">Your Schedules</a>
+                </li>
+                {% endif %}                
+                <li class="nav-item align-self-center">
+                    <span class="nav-link click-scroll" href="{% url 'logout' %}">
+                        <a class="btn btn-outline-danger" href="{% url 'logout' %}">Logout</a>
+                    </span>
+                </li>
+                {% else %}
+                <li class="nav-item align-self-center c-url" data-url="{% url 'login' %}">
+                    <a class="nav-link click-scroll" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item align-self-center c-url" data-url="{% url 'register' %}">
+                    <a class="nav-link click-scroll" href="{% url 'register' %}">Register</a>
+                </li>
+                <li class="nav-item align-self-center c-url" data-url="{% url 'password.forgot' %}">
+                    <a class="nav-link click-scroll" href="{% url 'password.forgot' %}">Forgot Password</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<script>
+    $(document).ready(function () {
+    "use strict"
+    
+    $('.c-url').each(function(k, elt) {
+        const url = $(this).data('url');
+
+        const activeUrl = location.pathname;
+
+        if (activeUrl == url) {
+            $(this).addClass('border border-info')
+        }
+    })
+})
+</script>

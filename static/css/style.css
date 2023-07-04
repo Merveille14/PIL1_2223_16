@@ -1,0 +1,16 @@
+html, body {
+    overflow-x: hidden!important;
+}
+
+.statut{
+    background-image: url('../img/calendar-with-pencil-monstera-leaf.jpg' );
+    background-size: cover;
+}
+
+#main {
+    background-color: black !important;
+}
+
+th {
+    vertical-align: middle!important;
+}

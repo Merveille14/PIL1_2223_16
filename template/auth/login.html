@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+
+{% block 'title' %}
+Se connecter
+{% endblock %}
+
+{% block 'main' %}
+<div class="row">
+    <div class="col col-12 col-lg-6 mx-auto">
+        <div class="card shadow rounded">
+            <div class="card-header text-center">
+                <h3>Login</h3>
+            </div>
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% if error %}
+                    <div class="my-3 alert alert-danger text-center py-2">
+                        <p class="my-0"> {{ error }} </p>
+                    </div>
+                    {% endif %}
+                    <div class="my-3">
+                        <label for="email_id" class="form-label">Email:</label>
+                        <input type="email" name="email" id="email_id" class="form-control form-control-lg" required
+                            placeholder="Enter your valid email">
+                    </div>
+                    <div class="my-3">
+                        <label for="password_id" class="form-label">Password:</label>
+                        <input type="password" name="password" id="password_id" class="form-control form-control-lg"
+                            required placeholder="Your password">
+                    </div>
+                    <div class="my-2 d-flex justify-content-end text-end flex-column flex-lg-row">
+                        <a href="{% url 'register' %}" class="mx-2">Create an account?</a>
+                        <a href="{% url 'password.forgot' %}" class="">Did you forgot your password?</a>
+                    </div>
+                    <div class="my-3 text-center">
+                        <button class="btn btn-primary w-50 mx-auto">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

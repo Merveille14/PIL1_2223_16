@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block 'title' %} {% endblock %} - myTimeTable</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/templatemo-kind-heart-charity.css' %}">
+    <script src="{% static 'vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+</head>
+
+<body class="statut">
+    <header>
+        {% include 'base/header.html' %}
+    </header>
+    <section class="section-padding" id="section_3">
+        <div class="container">
+            {% block 'main' %}
+            {% endblock %}
+        </div>
+    </section>
+</body>
+
+</html>

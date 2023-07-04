@@ -1,0 +1,65 @@
+{% extends 'base/base.html' %}
+
+{% block 'title' %} Creer un compte {% endblock %}
+
+{% block 'main' %}
+<div class="row">
+    <div class="col col-12 col-lg-6 mx-auto">
+        <div class="card shadow rounded">
+            <div class="card-header text-center">
+                <h3>Register</h3>
+            </div>
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+
+                    {% if error %}
+                    <div class="my-3 alert alert-danger">
+                        <p class="my-0"> {{ error }} </p>
+                    </div>
+                    {% endif %}
+                    <div class="my-3">
+                        <label for="first_name_id" class="form-label">First Name:</label>
+                        <input type="text" name="first_name" id="first_name_id" class="form-control form-control-lg" required
+                            placeholder="Enter your First Name">
+                    </div>
+                    <div class="my-3">
+                        <label for="last_name_id" class="form-label">Last Name:</label>
+                        <input type="text" name="last_name" id="last_name_id" class="form-control form-control-lg" required
+                            placeholder="Enter your Last Name">
+                    </div>
+                    <div class="my-3">
+                        <label for="email_id" class="form-label">Email:</label>
+                        <input type="email" name="email" id="email_id" class="form-control form-control-lg" required
+                            placeholder="Enter your valid email">
+                    </div>
+                    <div class="my-3">
+                        <label for="level_id" class="form-label">Select Your Level:</label>
+                        <select name="level_id" id="level_id" class="form-control form-select form-select-lg">
+                            {% for level in levels %}
+                            <option value="{{ level.id }}"> {{ level.label }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="my-3">
+                        <label for="password_id" class="form-label">Password:</label>
+                        <input type="password" name="password" id="password_id" class="form-control form-control-lg"
+                            required placeholder="Your password">
+                    </div>
+                    <div class="my-3">
+                        <label for="confirm_password_id" class="form-label">Confirm Password:</label>
+                        <input type="password" name="confirm_password" id="confirm_password_id" class="form-control form-control-lg"
+                            required placeholder="Confirm  password">
+                    </div>
+                    <div class="my-2 d-flex justify-content-end text-end">
+                        <a href="{% url 'login' %}" class="mx-2">Already have an account?</a>
+                    </div>
+                    <div class="my-3 text-center">
+                        <button class="btn btn-primary w-50 mx-auto">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

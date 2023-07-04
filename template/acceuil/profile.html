@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+
+{% block 'title' %} Classrooms {% endblock %}
+
+{% block 'main' %}
+<div class="my-3">
+    <h1 class="">Votre Profile</h1>
+</div>
+<div>
+    {% if error %}
+    <div class="my-3 alert alert-danger py-3 text-center">
+        <p class="my-0"> {{ error }} </p>
+    </div>
+    {% endif %}
+    {% if success %}
+    <div class="my-3 alert alert-success py-3 text-center">
+        <p class="my-0"> {{ success }} </p>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="card shadow rounded col-11 col-lg-6 mx-auto">
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="my-3">
+                        <label for="first_name_id" class="form-label">First Name:</label>
+                        <input type="text" name="first_name" id="first_name_id" class="form-control form-control-lg" required
+                            placeholder="Enter your First Name" value="{{ user.first_name }}">
+                    </div>
+                    <div class="my-3">
+                        <label for="last_name_id" class="form-label">Last Name:</label>
+                        <input type="text" name="last_name" id="last_name_id" class="form-control form-control-lg" required
+                            placeholder="Enter your Last Name" value="{{ user.last_name }}">
+                    </div>
+                    <div class="my-3">
+                        <label for="email_id" class="form-label">Email:</label>
+                        <input type="email" name="email" id="email_id" class="form-control form-control-lg" required
+                            placeholder="Enter your valid email" value="{{ user.email }}">
+                    </div>
+                    {% if not user.is_superuser %}
+                    <div class="my-3">
+                        <label for="level_id" class="form-label">Select Your Level:</label>
+                        <select name="level_id" id="level_id" class="form-control form-select form-select-lg">
+                            {% for level in levels %}
+                            <option value="{{ level.id }}" {% if user.level.id == level.id %} selected {% endif %}> {{ level.label }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endif %}
+                    <div class="my-3 text-center">
+                        <button class="btn btn-primary w-50 mx-auto">Update Your Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

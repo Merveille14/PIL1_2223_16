@@ -1,0 +1,219 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block 'title' %} Acceuil {% endblock %}
+
+{% block 'main' %}
+<style>
+     .main-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px; /* Vous pouvez ajuster cet espacement selon vos besoins */
+        align-items: center;
+    }
+
+    .main-container img {
+        max-width: 100%;
+        float: right; /* Fait flotter l'image à droite */
+    }
+
+    .main-container .text {
+        grid-column: 1;
+        overflow: hidden; /* Pour établir un contexte d'établissement de format pour les éléments flottants */
+    }
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    body {
+        font-family: Tw Cen Mt;
+        background-color: BLACK;
+    }
+
+    #main {
+        background-color: black !important;
+    }
+
+    /* Style de la boîte de dialogue de sélection */
+    .prompt-box {
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        text-align: center;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background: url('fondlogin.JPG') top right no-repeat;
+        /* Modifier "center center" par "top right" */
+        z-index: -100;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        padding: 30px 0;
+    }
+
+    nav .logo {
+        width: 170px;
+    }
+
+    nav .menu-icon {
+        width: 60px;
+        cursor: pointer;
+    }
+
+    nav ul {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 40px;
+    }
+
+    nav ul li {
+        list-style: none;
+        margin-left: 20px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.2rem;
+        transition: color .3s;
+    }
+
+    nav ul li a:hover {
+        color: rgba(62, 118, 239, 0.915);
+    }
+
+    .text {
+        padding: 70px 0;
+        color: #fff;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .text h1 {
+        font-size: 75px;
+        line-height: 1.5;
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+    }
+
+    .text p {
+        font-size: 1.3rem;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        margin-bottom: 2rem;
+    }
+
+    .text a {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 1.25rem;
+        border: 1px solid rgba(62, 118, 239, 0.915);
+        color: rgba(62, 118, 239, 0.915);
+        padding: 10px 20px;
+        margin-right: 30px;
+    }
+
+    .auto-typing {
+        color: rgba(62, 118, 239, 0.915);
+    }
+
+    #menu-links {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        #menu-links.show {
+            display: block;
+        }
+    }
+
+
+
+    /* Classe pour le conteneur du filigrane */
+    .watermark-container {
+        position: relative;
+        /* Permet de positionner le filigrane par rapport à ce conteneur */
+    }
+
+    /* Style du filigrane */
+    .watermark {
+        position: absolute;
+        /* Permet de positionner le filigrane sur la page */
+        top: 50%;
+        /* Ajustez la position verticale selon vos besoins */
+        left: 50%;
+        /* Ajustez la position horizontale selon vos besoins */
+        transform: translate(-50%, -50%);
+        /* Centre le filigrane */
+        opacity: 0.5;
+        /* Ajustez l'opacité du filigrane selon vos besoins */
+    }
+</style>
+<div id="main" class="rounded shadow">
+        <div class="main-container">
+    <section class="text">
+        <h1>Welcome to <span class="auto-typing"></span></h1>
+        <p> With TIMETABLE App, easily transmit the programs <br>
+            of the week to your students.<br>
+            {% if user.is_superuser %}
+            Here you can edit your schedules<br>
+            quickly and securely.</p>
+        <a href="{% url 'timetable' 999999999 %}">Add Schedules</a>
+        <a href="/admin"> Edit Additionals informations</a>
+        {% else %}
+        Here you can view your schedules<br>
+        quickly and securely.</p>
+        <a href="{% url 'timetables.students' %}">View Your Schedules</a>
+        {% endif %}
+    </section>
+
+    <img src="{% static 'img/fondetu.PNG' %}" alt="Image etudiant">
+    </div>
+    <div class="overlay"></div>
+    
+</div>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+    let typed = new Typed('.auto-typing', {
+        strings: ['our', 'MyTimeTable', 'Our Marvel world', 'pure power'],
+        typeSpeed: 100,
+        backSpeed: 100,
+        loop: true,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 500
+    });
+
+    function toggleMenu() {
+        var menuLinks = document.getElementById('menu-links');
+        if (menuLinks.style.display === 'block') {
+            menuLinks.style.display = 'none';
+        } else {
+            menuLinks.style.display = 'block';
+        }
+    }
+</script>
+
+
+{% endblock %}
