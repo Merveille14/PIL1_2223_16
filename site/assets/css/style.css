@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none ;
+    list-style: none;
+}
+body{
+    font-family: 'poppins';
+}
+header{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("ccc.jpg");
+    background-size: cover;
+} 
+.navbar{
+position: absolute;
+margin: 30px;
+display: flex;
+justify-content: space-between;
+width: 95%;
+box-sizing: border-box;
+
+}
+
+.navbar a{
+    color: aquamarine;
+
+}
+.navbar .logo{
+    font-size: 2em;
+    font-weight: bold ;
+}
+
+.navbar .menu{
+    display: none;
+    width: 35px;
+    position: absolute;
+    right: 50px;
+    top: 50px;
+
+
+}
+.navbar .navlinks{
+display: flex;
+text-align: center   ;
+}
+@media screen and[max width:900px;] 
+
+{
+    .navbar .menu{
+        display: block;
+    
+    
+    }
+    .navbar{
+        padding: 0;
+    }
+   .navlinks{
+    top: 0;
+    left: 0;
+    position: absolute ;
+    background-color: rgba(252, 250, 250, 0.721);
+    backdrop-filter: blird(7px);
+     
+    width: 100%;
+    height: 100vh;
+    display: flex;
+     justify-content: center;
+     align
+    } 
+    .navlinks ul{
+        display: flex;
+        flex-direction: column; 
+        align-items: center  ;   
+    } 
+
+}
